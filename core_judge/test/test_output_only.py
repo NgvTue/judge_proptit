@@ -14,7 +14,7 @@ with open("/opt/source_code_for_testing/par.cpp","r") as f:
 
 job_description = {
     "multiprocess":False,
-    "time":1.,
+    "time":3.,
     "contestant_source":contestant_source,
     "contestant_lang":"cpp",
     "checker":"/opt/problems_test/4/checker.cpp",
@@ -29,4 +29,5 @@ wo = OutputOnly(job_description)
 # wo.prepare_file()
 # wo.compiler()
 wo.run()
+# wo.eval_status()
 # wo.sandbox.cleanup()

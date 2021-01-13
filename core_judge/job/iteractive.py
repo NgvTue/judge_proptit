@@ -185,7 +185,7 @@ class Iteractive(JobBase):
 
         if status[0] is not True or status[1] is not True:
             self.update_status(log=status[-1])
-            return status[0]
+            return False
 
         
 

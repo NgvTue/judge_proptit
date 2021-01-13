@@ -16,7 +16,7 @@ class Env(object):
 
         # Sandbox.
         # Max size of each writable file during an evaluation step, in KiB.
-        self.max_file_size = 512 * 1024  # 1 GiB
+        self.max_file_size = 256 * 1024  # 1 GiB
         # Max processes, CPU time (s), memory (KiB) for compilation runs.
         self.compilation_sandbox_max_processes = 1000
         self.compilation_sandbox_max_time_s = 10.0
@@ -34,7 +34,7 @@ env = Env()
 import os
 import logging
 
-env.level_logging = logging.INFO
+env.level_logging = logging.DEBUG
 
 logging.basicConfig(level=env.level_logging)
 # Lấy địa chỉ đường dẫn các trình biên dịch, thực thi

@@ -12,7 +12,7 @@ contestant_source = []
 with open("/opt/problems_test/iteractive/wa_sol.cpp","r") as f:
     contestant_source = f.read()
 jobdescription = {
-    "multiprocess":1000,
+    # "multiprocess":,
     "time":1.,
     "contestant_source":contestant_source,
     "contestant_lang":"cpp",
