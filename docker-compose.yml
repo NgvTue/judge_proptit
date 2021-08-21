@@ -1,0 +1,42 @@
+
+version: '3.8'
+
+services:
+
+    judge:
+        build: ./core_judge
+        ports:
+            - 8004:8000
+        command: uvicorn main:app --host 0.0.0.0 --reload
+        volumes:
+            - ./core_judge:/opt
+        environment:
+            - CELERY_BROKER_URL=redis://redis:6379/0
+            - CELERY_RESULT_BACKEND=redis://redis:6379/0
+            - LC_ALL=C.UTF-8
+            - LANG=C.UTF-8
+        depends_on:
+            - redis
+        privileged: true
+        tty: true
+    worker:
+        build: ./core_judge
+        command: celery --app=worker.celery worker --loglevel=debug
+        volumes:
+            - ./core_judge:/opt
+        environment:
+            - CELERY_BROKER_URL=redis://redis:6379/0
+            - CELERY_RESULT_BACKEND=redis://redis:6379/0
+            - LC_ALL=C.UTF-8
+            - LANG=C.UTF-8
+        depends_on:
+            - judge
+            - redis
+        privileged: true
+        tty: true
+
+
+    redis:
+        image: redis:6-alpine
+
+        
