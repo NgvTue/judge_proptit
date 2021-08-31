@@ -17,20 +17,20 @@ RUN cd isolate && make isolate && make install
 ENV ISOLATE /opt/isolate/isolate
 
 # Install Java
-RUN apt-get install openjdk-11-jdk-headless -y
-ENV JAVA_PATH /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-ENV JAVAC_PATH /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+# RUN apt-get install openjdk-11-jdk-headless -y
+# ENV JAVA_PATH /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+# ENV JAVAC_PATH /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
 
-#Install python environment
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-RUN /bin/bash miniconda.sh -b -p /opt/conda && \
-    rm miniconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
+# #Install python environment
+# RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+# RUN /bin/bash miniconda.sh -b -p /opt/conda && \
+#     rm miniconda.sh && \
+#     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+#     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
 
-RUN /opt/conda/bin/conda create -n py3 python=3.7 -y
+# RUN /opt/conda/bin/conda create -n py3 python=3.7 -y
 
-ENV PY3_PATH /opt/conda/envs/py3/bin/python
+# ENV PY3_PATH /opt/conda/envs/py3/bin/python
 
 RUN apt-get install python3 python3-dev python3-pip -y
 
